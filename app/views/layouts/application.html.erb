@@ -52,7 +52,9 @@
         <ul class="navbar-nav my-lg-0">
           <% if user_signed_in? %>
             <li class="nav-item">
-              <img src="<%= current_user.image %>" width="45px" height="45px">
+              <% if current_user.image %>
+                <img src="<%= current_user.image %>" width="45px" height="45px">
+              <% end %>
 							Hi <%= current_user[:name] || current_user[:email] %>
 						</li>
             <li class="nav-item">

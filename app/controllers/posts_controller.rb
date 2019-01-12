@@ -16,10 +16,14 @@ class PostsController < ApplicationController
 
   def edit
     @post = Post.find(params[:id])
+    authorize! :manage, @post
   end
 
   def update
     @post = Post.find(params[:id])
+
+    authorize! :manage, @post
+
     @post.update_attributes(post_params)
 
     if @post.errors.any?
@@ -43,7 +47,12 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    Post.find(params[:id]).destroy
+    post = Post.find(params[:id])
+
+    authorize! :manage, post
+
+    post.destroy
+
     flash[:notice] = "Destroyed post with id #{params[:id]}"
     redirect_to posts_path
   end

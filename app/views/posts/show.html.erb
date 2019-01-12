@@ -4,7 +4,7 @@
 
 <br><small>Posted by <%= @post.user.name %> on <%= @post.created_at.to_s(:short) %></small>
 
-<% if current_user %>
+<% if can?(:manage, @post) %>
   <hr>
   <%= link_to "Edit post", edit_post_path(id: @post.id), class: "btn btn-primary" %>
   <%= button_to "Delete post", post_path(id: @post.id), :method => :delete, class: "btn btn-danger btn-primary", data: { confirm: "Are you sure?" }  %>
