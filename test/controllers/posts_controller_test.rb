@@ -42,4 +42,14 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
       ->{ post.reload }.must_raise
     end
   end
+
+  describe "update" do
+    it "updates a post" do
+      post = Post.create(title: "Some title", body: "Some body")
+      put post_url(id: post.id, params: { post: { title: "Updated title", body: "Updated body" }})
+      post.reload
+      post.title.must_equal "Updated title"
+      post.body.must_equal "Updated body"
+    end
+  end
 end

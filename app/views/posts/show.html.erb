@@ -2,4 +2,6 @@
 
 <%= @post.body %>
 
+<hr>
+<%= link_to "Edit post", edit_post_path(id: @post.id), class: "btn btn-primary" %>
 <%= button_to "Delete post", post_path(id: @post.id), :method => :delete, class: "btn btn-danger btn-primary", data: { confirm: "Are you sure?" }  %>
