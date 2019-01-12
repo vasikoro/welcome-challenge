@@ -1,4 +1,8 @@
 class PostsController < ApplicationController
+  def show
+    @post = Post.find(params[:id])
+  end
+
 	def index
     # TODO: Paginate
     @posts = Post.all
@@ -16,6 +20,12 @@ class PostsController < ApplicationController
       flash[:notice] = "Successfully created post with title '#{post.title}'"
       redirect_to posts_path
     end
+  end
+
+  def destroy
+    Post.find(params[:id]).destroy
+    flash[:notice] = "Destroyed post with id #{params[:id]}"
+    redirect_to posts_path
   end
 
   private

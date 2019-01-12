@@ -34,4 +34,12 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
       Post.count.must_equal posts + 1
     end
   end
+
+  describe "delete" do
+    it "deletes a post" do
+      post = Post.create(title: "Some title", body: "Some body")
+      delete post_url(id: post.id)
+      ->{ post.reload }.must_raise
+    end
+  end
 end
