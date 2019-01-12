@@ -288,5 +288,5 @@ Devise.setup do |config|
   #   include Turbolinks::Controller
   # end
 
-  config.omniauth :facebook, ENV["FACEBOOK_APP_ID"], ENV["FACEBOOK_APP_SECRET"], callback_url: "http://agile-escarpment-34393.herokuapp.com/users/auth/facebook/callback"
+  config.omniauth :facebook, ENV["FACEBOOK_APP_ID"], ENV["FACEBOOK_APP_SECRET"], callback_url: "https://agile-escarpment-34393.herokuapp.com/users/auth/facebook/callback"
 end
