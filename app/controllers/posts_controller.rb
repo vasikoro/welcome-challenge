@@ -8,6 +8,10 @@ class PostsController < ApplicationController
 	def index
     # TODO: Paginate
     @posts = Post.all
+
+    if params[:user_id]
+      @posts = @posts.where(user_id: params[:user_id])
+    end
 	end
 
   def new

@@ -1,6 +1,6 @@
 <ul>
 <% @posts.each do |post| %>
-  <li><%= link_to post.title, post_path(post.id) %></li>
+  <li><%= link_to post.title, post_path(post.id) %> - Posted by <%= link_to post.user.name || post.user.email, posts_path(user_id: post.user_id) %></li>
 <% end %>
 
 <hr>
