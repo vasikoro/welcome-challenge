@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+  before_action :authenticate_user!, except: [:show, :index]
+
   def show
     @post = Post.find(params[:id])
   end
@@ -30,7 +32,8 @@ class PostsController < ApplicationController
   end
 
   def create
-    post = Post.create(post_params)
+    post = Post.create(post_params.merge(user: current_user))
+
     if post.errors.any?
       flash[:alert] = post.errors.full_messages.to_sentence
     else
