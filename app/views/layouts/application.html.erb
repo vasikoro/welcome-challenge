@@ -49,13 +49,20 @@
             <%= link_to "New post", new_post_path, class: "nav-link" %>
           </li>
         </ul>
-        <form class="form-inline my-2 my-lg-0">
+        <ul class="navbar-nav my-lg-0">
           <% if user_signed_in? %>
-            <%= link_to('Logout', destroy_user_session_path, method: :delete, class: "btn btn-primary") %>
+            <li class="nav-item">
+              <img src="<%= current_user.image %>" width="45px" height="45px">
+							Hi <%= current_user[:name] || current_user[:email] %>
+						</li>
+            <li class="nav-item">
+							<%= link_to('Logout', destroy_user_session_path, method: :delete, class: "btn btn-primary") %>
+						</li>
           <% else %>
             <%= link_to('Login', new_user_session_path, class: "btn btn-primary") %>
+						<%= link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path, class: "btn btn-primary" %>
           <% end %>
-        </form>
+        </ul>
       </div>
     </nav>
 
