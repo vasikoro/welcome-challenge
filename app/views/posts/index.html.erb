@@ -2,4 +2,7 @@
 <% @posts.each do |post| %>
   <li><%= post.title %></li>
 <% end %>
+
+<hr>
+<%= link_to "New Post", new_post_url, { class: "btn btn-primary"} %>
 </ul>
